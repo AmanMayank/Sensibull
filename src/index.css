@@ -42,3 +42,25 @@ td{
     text-align: center;
 }
 
+.search-bar{
+    border : 2px solid lightgray;
+    border-radius: 5px;
+    padding:10px;
+    margin-bottom:10px;
+}
+
+.search-bar form{
+    display: flex;
+    flex-direction: column;
+}
+
+label{
+    margin-bottom: 10px;
+    font-size: 1.4rem;
+}
+
+input{
+    height:2rem;
+    padding:15px;
+}
+

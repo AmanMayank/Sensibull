@@ -2,12 +2,17 @@ import React from 'react'
 
 function Stocks({stocks}) {
 
-    console.log(stocks)
+    // console.log(stocks)
   return (
     <>
         {
             stocks.map((stock) => {
-                const {Symbol, Name, Sector} = stock;
+                let {Symbol, Name, Sector} = stock;
+                if(!Symbol){
+                Symbol = stock.item.Symbol;
+                Name = stock.item.Name;
+                Sector = stock.item.Sector;
+                }
                 return(
                     <tr key={Symbol}>
                         <td>{Symbol}</td>
