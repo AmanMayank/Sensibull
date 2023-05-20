@@ -9,6 +9,7 @@ function Quotes() {
   const [symbolData, setSymbolData] = useState([]) 
   const [isAsc, setIsAsc]=useState('') 
 
+  //Function to get the data for a particular symbol
   const fetchSymbolData = async(symbol) => {
     try{
             const response = await axios.get(`https://prototype.sbulltech.com/api/v2/quotes/${symbol}`)
@@ -39,6 +40,7 @@ function Quotes() {
     }
   }
 
+  //Function to auto-refresh the data
   const dataRefresh = (symbolPrice) => {
     symbolPrice.sort((a,b) => a["valid_till"].localeCompare(b["valid_till"]))
 
