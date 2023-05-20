@@ -1,10 +1,10 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState,useCallback } from "react";
 import axios from "axios";
 import Fuse from "fuse.js";
-import SearchBar from "./SearchBar";
+import SearchBar from "../components/SearchBar";
 
 
-import Stocks from "./Stocks";
+import Stocks from "../components/Stocks";
 
 function Homepage() {
 
@@ -12,7 +12,7 @@ function Homepage() {
   const [search, setSearch] = useState([]);
   
   
-  const fetchStocks = async()=>{
+  const fetchStocks = useCallback(async()=>{
     try{
       const response = await axios.get('https://prototype.sbulltech.com/api/v2/instruments');
       let JsonData = csvJSON(response.data);
@@ -24,7 +24,7 @@ function Homepage() {
       console.error(e);
     }
     
-  }
+  },[])
 
   const onSubmit = (term) => {
     console.log("aman==", term, term.length)
@@ -70,7 +70,7 @@ function Homepage() {
 
   useEffect(() => {
     fetchStocks()
-  }, [])
+  }, [fetchStocks])
 
   return (
     <>

@@ -1,8 +1,18 @@
-import React from 'react'
+import axios from 'axios';
+import React, { useState } from 'react'
+import { useNavigate } from 'react-router-dom';
 
 function Stocks({stocks}) {
+    
+  const navigate = useNavigate();
 
-    // console.log(stocks)
+
+  const handleClick = (symbol) => {
+    console.log(symbol);
+    navigate(`./quotes?symbol=${symbol}`);
+  }  
+
+    
   return (
     <>
         {
@@ -15,7 +25,7 @@ function Stocks({stocks}) {
                 }
                 return(
                     <tr key={Symbol}>
-                        <td>{Symbol}</td>
+                        <td onClick={() => handleClick(Symbol)} style={{cursor:'pointer'}}>{Symbol}</td>
                         <td>{Name}</td>
                         <td>{Sector}</td>
                     </tr>
