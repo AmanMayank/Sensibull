@@ -16,7 +16,6 @@ function Quotes() {
             const symbolPrice = response.data.payload[`${symbol}`];
             setSymbolData(symbolPrice)
             dataRefresh(symbolPrice)
-            // console.log(response, symbolData)
             }
         }catch(e){
             console.error(e);
@@ -41,14 +40,12 @@ function Quotes() {
   }
 
   const dataRefresh = (symbolPrice) => {
-    console.log("symbolPrice1",symbolPrice)
     symbolPrice.sort((a,b) => a["valid_till"].localeCompare(b["valid_till"]))
-    console.log("symbolPrice2",symbolPrice)
 
     const pad = (n,s=2) => (`${new Array(s).fill(0)}${n}`).slice(-s);
     const d = new Date();
-    // let x=symbolPrice[0].valid_till
-    let x = "2023-05-20 11:19:42"
+    let x=symbolPrice[0].valid_till
+    // let x = "2023-05-20 11:19:42"
     let mainDate= `${pad(d.getFullYear(),4)}-${pad(d.getMonth()+1)}-${pad(d.getDate())} ${pad(d.getHours())}:${pad(d.getMinutes())}:${pad(d.getSeconds())}`;
     var date = new Date(mainDate); 
     var date1 = date.getTime();

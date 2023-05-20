@@ -8,7 +8,6 @@ function Stocks({stocks}) {
 
 
   const handleClick = (symbol) => {
-    console.log(symbol);
     navigate(`./quotes?symbol=${symbol}`);
   }  
 

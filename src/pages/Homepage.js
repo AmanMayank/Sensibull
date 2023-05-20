@@ -18,7 +18,6 @@ function Homepage() {
       let JsonData = csvJSON(response.data);
       if(JsonData.length > 0){
         setStocks(JsonData)
-        // console.log(JsonData.length);
       }
     } catch(e){
       console.error(e);
@@ -27,13 +26,11 @@ function Homepage() {
   },[])
 
   const onSubmit = (term) => {
-    console.log("aman==", term, term.length)
     if(term.length===1){
       setStocks(stocks);
       setSearch([])
       return
     }
-    // console.log(term)
     const fuse = new Fuse(stocks, {
       keys : [
         'Symbol',
@@ -45,7 +42,6 @@ function Homepage() {
     })
     const results = fuse.search(term);
     setSearch(results)
-    console.log(results);
   }
 
   const csvJSON = (csv)=> {
@@ -65,7 +61,6 @@ function Homepage() {
         result.push(obj)
     }
     return result;
-    // console.log(result)
 }
 
   useEffect(() => {
